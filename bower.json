@@ -1,0 +1,23 @@
+{
+  "name": "Sample Project",
+  "authors": [
+    "Oluwafemi Emmanuel Ooju <femtope@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.8"
+  }
+}

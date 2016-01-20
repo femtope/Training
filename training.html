@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Working Aroung Angular JS
+        </title>
+        <link href="animation.css" rel="stylesheet" type="text/css">
+         <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script language="javascript" type="application/javascript">
+        
+        
+        </script>
+    </head>
+    <body ng-app="module1">
+       
+        <div ng-controller="ctrl as fem">
+            Name:  <input type="text" ng-model="name"/> {{ name }}
+            <p></p>
+            <p></p>
+            Age:  <input type="text" ng-model="age"/> {{ age }}
+            <p></p>
+            <p></p>
+            Occupation:  <input type="text" ng-model="occupation"/> {{ occupation }}
+            <p></p>
+            
+        </div>
+        
+        <div ng-init="names=[
+                            {name:'Musa Musa', age: 30, occupation: 'Programming'},
+                            {name:'Ajiri Ajiri', age: 35, occupation: 'Remote Sensing'},
+                            {name:'Oluwaseun E', age: 32, occupation: 'Junior Technician'},
+                            {name:'Jerome Oyetoro', age: 51, occupation: 'Map Specialist'},
+                            {name:'Dami Sonoiki', age: 33, occupation: 'GIS Manager'},
+                            {name:'Oluwafemi O.', age: 35, occupation: 'GIS Developer'},
+                            {name:'Susan Simon', age: 28, occupation: 'Data Analyst'},
+                            {name:'Ooju Uzoamaka', age: 33, occupation: 'eTally Trainer'},
+                            {name:'Olatunji Olamkide', age: 32, occupation: 'Team Member'},
+                            {name:'Adebayo Samuel', age: 33, occupation: 'Team Member'}
+                                             ]">
+            I have {{names.length}} staffs. They are:: 
+            <h3> Playing around with Looping using ng-repeat</h3>
+            
+            <input type="search" ng-model="q" placeholder="Search for Staffs and there details by Names..." size="50"/>
+            
+            <ul>
+                <li ng-repeat="list in names"> 
+                    {{$index + 1}}.  {{list.name}} who is a {{list.occupation}} and {{list.age}} years old.
+                </li>
+                
+                <li ng-if="results.length == 0">
+                    <strong>No Staff With Such Name(s)...</strong>
+                </li>
+            </ul>
+        
+        </div>
+    
+    </body>
+
+
+
+
+
+</html>

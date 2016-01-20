@@ -1,0 +1,98 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+<title>To Do Filter.</title>
+<script src="bower_components/angular/angular.js"></script>
+<link rel="stylesheet" href="todo.css">
+
+<script language="javascript" type="application/javascript">
+    angular.module('todoModule', [])
+        .controller('todoCtrl', function($scope){
+        $scope.todoArray = [{
+            name: 'Create todo JSON object',
+            status: 'on-going'
+        },
+                            
+       {
+            name: 'Learn Angular filters',
+           status: 'pending'
+       },
+        
+        {
+            name: 'Going to Check Halls',
+           status: 'done'
+       }
+        ]
+        $scope.statusArray = ["pending","on-going","done"]
+        $scope.todoItem = {}
+        $scope.addTodoList = function(){
+            $scope.todoArray.push($scope.todoItem)
+            $scope.todoItem = {}
+        }
+        $scope.removeTodo = function(index){
+            $scope.todoArray.splice(index, 1)
+        }
+    })
+    $scope.changeStatus = function(todoItem, status){
+        todoItem.status = status
+        
+    }
+</script>
+</head>
+
+<body ng-app="todoModule">
+    <div ng-controller="todoCtrl as fem">
+        <header id="header">
+            <h2><font color = "pink">  Activities on Board</font></h2>
+        </header>
+        
+        <div>
+        
+            <label >To do List Input: </label>
+        
+            
+        <p>
+            <input ng-model="todoItem.name" ng-model="q" type="text" size = "50" id = "new" placeholder="Input Your Todo List">
+        </p>
+        
+            
+        <p>
+            <select id="statusList" ng-model="todoItem.status" >
+                <option> </option>
+                <option ng-repeat="status in statusArray" value="{{status}}"> &nbsp;{{status}}&nbsp;</option>
+                
+            </select>
+        </p>
+            
+            
+        <input type = "button" ng-click = "addTodoList()" value = "   Submit   ">
+            <p> </p>
+        <h2 class="pending"><label ><br>On Going Todo</br> </label></h2>
+    </div>
+      
+    <ul>
+        <li ng-repeat="todo in todoArray | filter:{status: filter_status}" ng-if="todo.status !=='done'">{{todo.name}} &nbsp;&nbsp;&nbsp; 
+            <select id="statusList" ng-model="todo.status">
+                <option> </option>
+                <option ng-repeat="status in statusArray" value="{{status}}"> &nbsp;{{status}}&nbsp;</option>
+                
+            </select>
+            
+            &nbsp;&nbsp;&nbsp;&nbsp;<button ng-click="removeTodo($index)"> Remove</button>&nbsp;&nbsp;&nbsp;</p></li>   
+      </ul>
+     
+    <p> </p>
+            <h2 class="done"><label ><br>Completed Task</br> </label></h2>
+       
+    <ul>
+        <li ng-repeat="todo in todoArray | filter:{status: filter_status}" ng-if="todo.status ==='done'">{{todo.name}} &nbsp;{{todo.status}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button ng-click="removeTodo($index)"> Remove</button>&nbsp;&nbsp;&nbsp;</p></li>   
+    </ul>
+
+</div>
+    
+    
+</body>
+
+</html>

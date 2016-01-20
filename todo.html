@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+<title>To Do Practice.</title>
+<script src="bower_components/angular/angular.js"></script>
+
+<script language="javascript" type="application/javascript">
+    angular.module('todoModule', [])
+        .controller('todoCtrl', function($scope){
+        $scope.todoArray = []
+        $scope.todoItem = {}
+        $scope.addTodoList = function(){
+            $scope.todoArray.push($scope.todoItem)
+            $scope.todoItem = {}
+        }
+        $scope.removeTodo = function(index){
+            $scope.todoArray.splice(index, 1)
+        }
+    })
+</script>
+</head>
+
+<body ng-app="todoModule">
+    <div ng-controller="todoCtrl as fem">
+        <header id="header">
+            <h2><font color = "pink">  Activities on Board</font></h2>
+        </header>
+        
+        <div>
+            <label >To do List Input: </label>
+        <p>
+            <input ng-model="todoItem.name" type="text" size = "50" id = "new" placeholder="Input Your Todo List">
+        </p>
+        <p>
+            <input ng-model="todoItem.status" type="text" size = "50" id = "new" placeholder="Status">
+        </p>
+        <input type = "button" ng-click = "addTodoList()" value = "   Submit   ">
+    </div>
+      <ul>
+          <li ng-repeat="todo in todoArray">{{todo.name}} &nbsp;{{todo.status}} &nbsp;<button ng-click="removeTodo($index)"> Remove</button></li>   
+      </ul>
+     
+       
+    </div>
+    
+    
+</body>
+
+</html>

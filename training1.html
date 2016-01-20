@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+<title>To Do Filter.</title>
+<script src="bower_components/angular/angular.js"></script>
+<link rel="stylesheet" href="todo.css">
+
+<script language="javascript" type="application/javascript">
+    angular.module('Module1', [])
+        .controller('Ctrl', function($scope){
+        $scope.names = [{name:'Musa Musa', age: 30, occupation: 'Programming'},
+                            {name:'Ajiri Ajiri', age: 35, occupation: 'Remote Sensing'},
+                            {name:'Oluwaseun E', age: 32, occupation: 'Junior Technician'},
+                            {name:'Jerome Oyetoro', age: 51, occupation: 'Map Specialist'},
+                            {name:'Dami Sonoiki', age: 33, occupation: 'GIS Manager'},
+                            {name:'Oluwafemi O.', age: 35, occupation: 'GIS Developer'},
+                            {name:'Susan Simon', age: 28, occupation: 'Data Analyst'},
+                            {name:'Ooju Uzoamaka', age: 33, occupation: 'eTally Trainer'},
+                            {name:'Olatunji Olamkide', age: 32, occupation: 'Team Member'},
+                            {name:'Adebayo Samuel', age: 33, occupation: 'Team Member'}]
+        $scope.nameItem = {}
+        $scope.addNames = function(){
+        $scope.names.push($scope.nameItem)
+        $scope.nameItem = {}
+        }
+        $scope.removeName = function(index){
+            $scope.names.splice(index, 1)
+        }
+    })
+    
+</script>
+</head>
+
+<body ng-app="Module1">
+    <div ng-controller="Ctrl as fem">
+        <header id="header">
+            <h2 class="done"><label >Staffs Database System </label></h2>
+        </header>
+        
+        <div>
+        
+            
+        
+            
+        <p>
+            Staff Name(s): &nbsp;&nbsp;&nbsp;&nbsp;    <input ng-model="nameItem.name" type="text" size = "50" id = "new" placeholder="Staff Name(s)">
+        </p>
+        <p>
+            Staff Age: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <input ng-model="nameItem.age" type="text" size = "50" id = "new" placeholder="Staff Age">
+        </p>
+            <p>
+            Occupation: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <input ng-model="nameItem.occupation" type="text" size = "50" id = "new" placeholder="Occupation">
+        </p>
+        
+            
+            
+        <input type = "button" ng-click = "addNames()" value = "   Submit   ">
+            <p> </p>
+            
+            <p>
+            Search: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                <input ng-model="q" type="text" size = "50" id = "new" placeholder="Search by Name(s)....">
+        </p>
+
+        
+    </div>
+      
+    
+            <table border="1" style="width:100%">
+                <tr ng-repeat="list in names | filter:q as results">
+                    <td>{{$index+1}}.</td>
+                    <td>{{list.name}}</td>
+                    <td>{{list.age}}</td>
+                    <td>{{list.occupation}}</td>
+                </tr>      
+                <tr ng-if="results.length == 0">
+                    <td><Strong> No Staff with such Name(s). Try Again...</Strong></td>
+                </tr>
+                
+            </table>
+        
+        
+  
+      
+    
+</div>
+    
+    
+</body>
+
+</html>

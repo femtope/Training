@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+<title>Testing Training with Software Dept.</title>
+<script src="bower_components/angular/angular.js"></script>
+
+<script language="javascript" type="application/javascript">
+    angular.module('testModule', [])
+        .controller('testCtrl', function($scope){
+        $scope.testNames = [
+            'Femi Oni',
+            'Femi Ola',
+            'Femi Ope'
+        ]
+    })
+</script>
+</head>
+
+<body ng-app="testModule">
+    <div ng-controller="testCtrl">
+        <div ng-repeat="name in testNames">{{name}} is in position {{$index}}</div>
+    </div>
+    
+</body>
+
+</html>
